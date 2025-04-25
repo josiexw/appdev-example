@@ -8,9 +8,10 @@ function App() {
   const [name, setName] = useState('');
   const [authToken, setAuthToken] = useState('');
   const [greeting, setGreeting] = useState('');
+  const SERVER_URL = "https://appdev-example.onrender.com";
 
   const handleLogin = async () => {
-    const res = await fetch('http://localhost:5000/login', {
+    const res = await fetch(`${SERVER_URL}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
@@ -26,7 +27,7 @@ function App() {
   };
 
   const handleRegister = async () => {
-    const res = await fetch('http://localhost:5000/register', {
+    const res = await fetch(`${SERVER_URL}/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password, name }),
@@ -43,7 +44,7 @@ function App() {
 
   const fetchName = async (token) => {
     console.log("AUTH TOKEN", token);
-    const res = await fetch('http://localhost:5000/get_name', {
+    const res = await fetch(`${SERVER_URL}/get_name`, {
       headers: { Authorization: token },
     });
 
