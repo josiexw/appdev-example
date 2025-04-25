@@ -6,7 +6,7 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
 
 # Create database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
